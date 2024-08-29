@@ -1,20 +1,18 @@
 import {useState} from "react";
+import {NewTask} from "./NewTask.jsx";
+import {Report} from "./Report.jsx";
 
 export const Project = () => {
 
     function showNewTask() {
         return (
-            <div>
-                <p>New task</p>
-            </div>
+            <NewTask newTask/>
         );
     }
 
     function showGenerateReport() {
         return (
-            <div>
-                <p>Report</p>
-            </div>
+            <Report report/>
         );
     }
 

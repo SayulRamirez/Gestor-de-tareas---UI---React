@@ -5,6 +5,7 @@ import {Login} from "./components/Login.jsx";
 import {Register} from "./components/Register.jsx";
 import {Main} from "./components/Main.jsx";
 import {NewProject} from "./components/NewProject.jsx";
+import {Project} from "./components/Project.jsx";
 
 function App() {
   //const [count, setCount] = useState(0)
@@ -17,6 +18,7 @@ function App() {
           <Login login/>
           <Register register/>
           <Main main/>
+          <Project project/>
       </div>
     </>
   )

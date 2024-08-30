@@ -1,4 +1,5 @@
 import {useState} from "react";
+import {Link} from "react-router-dom";
 
 export const Login = () => {
 
@@ -23,7 +24,7 @@ export const Login = () => {
                                           value={password} onChange={(e) => setPassword(e.target.value)}/></p>
                     <button onClick={showCredentials}>Ingresar</button>
                 </form>
-                <p>¿Aun no tienes cuenta? da click <a href='Register.jsx'>aquí</a></p>
+                <p>¿Aun no tienes cuenta? <Link to='/register'>da click aquí</Link></p>
             </div>
         </>
     );

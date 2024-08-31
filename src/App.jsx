@@ -11,8 +11,6 @@ import {TasksDetails} from "./components/TasksDetails.jsx";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 
 function App() {
-  //const [count, setCount] = useState(0)
-
 
   return (
     <>
@@ -24,12 +22,10 @@ function App() {
                       <Route path="/" element={<Login/>} />
                       <Route path="/login" element={<Login/>} />
                       <Route path="/register" element={<Register/>} />
+                      <Route path="/reception" element={<Main/>} />
                   </Routes>
               </div>
-              <Register register/>
               <NewProject newProject/>
-              <Login login/>
-              <Main main/>
               <Project project/>
               <Task task/>
               <TasksDetails taskDetails/>

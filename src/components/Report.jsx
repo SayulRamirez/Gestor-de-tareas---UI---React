@@ -1,11 +1,25 @@
+import {Link, useParams} from "react-router-dom";
+import {useEffect, useState} from "react";
+import Project from "../services/Project.js";
+
 export const Report = () => {
 
-    function showDetails() {
-        alert("detalles");
-    }
+    const {idProject} = useParams();
+
+    const [reports, setReports] = useState([]);
+
+    useEffect(() => {
+        Project.getReport(idProject).then(response => {
+
+            setReports(response.data);
+        }).catch(error => {
+            console.error("Fetch error: ", error);
+        })
+    }, [idProject]);
 
     return (
         <div>
+            <Link to={`/project/${idProject}`}>Regresar</Link>
             <h3>Reporte</h3>
             <table>
                 <thead>
@@ -22,17 +36,21 @@ export const Report = () => {
                     </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>un nombre</td>
-                    <td>un paterno</td>
-                    <td>un materno</td>
-                    <td>un cel</td>
-                    <td>un asignadas</td>
-                    <td>un pendiente</td>
-                    <td>un en progreso</td>
-                    <td>un completa</td>
-                    <td><button onClick={showDetails}>Detalles</button></td>
-                </tr>
+                    {reports.map(report => (
+                        <tr key={report.id}>
+                            <td>{report.first_name}</td>
+                            <td>{report.last_name}</td>
+                            <td>{report.email}</td>
+                            <td>{report.phone_number}</td>
+                            <td>{report.assigned}</td>
+                            <td>{report.pending}</td>
+                            <td>{report.in_progress}</td>
+                            <td>{report.complete}</td>
+                            <td>
+                                <Link to={`/tasks/details/${report.id}/${idProject}`}>Detalles</Link>
+                            </td>
+                        </tr>
+                    ))}
                 </tbody>
             </table>
         </div>

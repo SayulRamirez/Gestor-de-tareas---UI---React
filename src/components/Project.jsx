@@ -56,6 +56,7 @@ export const Project = () => {
     return (
         <div>
             <div>
+                <Link to={'/reception'}>Regresar</Link>
                 <Link to={`/tasks/${idProject}`}>Asignar tarea</Link>
                 <Link to={`/report/${idProject}`}>Generar reporte</Link>
                 <button onClick={updateStatus}>Actualizar estatus</button>

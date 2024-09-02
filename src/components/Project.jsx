@@ -1,79 +1,77 @@
-import {useState} from "react";
-import {NewTask} from "./NewTask.jsx";
-import {Report} from "./Report.jsx";
+import {useEffect, useState} from "react";
+import ProjectService from "../services/Project.js";
+import {Link, useNavigate, useParams} from "react-router-dom";
 
 export const Project = () => {
 
-    function showNewTask() {
-        return (
-            <NewTask newTask/>
-        );
-    }
+    const [titleProject, setTitleProject] = useState("");
+    const [descriptionProject, setDescriptionProject] = useState("");
+    const [estimatedCompletion, setEstimatedCompletion] = useState("");
+    const [statusProject, setStatusProject] = useState("");
+    const [idProject, setIdProject] = useState("");
 
-    function showGenerateReport() {
-        return (
-            <Report report/>
-        );
-    }
+    const {id} = useParams();
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        ProjectService.getProject(id).then(response => {
+            setIdProject(response.data.id);
+            setTitleProject(response.data.title);
+            setDescriptionProject(response.data.description);
+            setEstimatedCompletion(response.data.estimated_completion);
+            setStatusProject(response.data.status);
+            console.log(response.data)
+        }).catch(error =>
+            console.error(error));
+    }, [id]);
 
     function updateStatus() {
-        return (
-            <div>
-                <p>Change status</p>
-            </div>
-        );
+        const request = {
+            id: idProject,
+            status: statusProject
+        }
+
+        ProjectService.updateStatus(request).then(response => {
+            setIdProject(response.data.id);
+            setTitleProject(response.data.title);
+            setDescriptionProject(response.data.description);
+            setEstimatedCompletion(response.data.estimated_completion);
+            setStatusProject(response.data.status);
+            console.log(response.data)
+        }).catch(error =>
+            console.error(error));
     }
 
     function deleteProject() {
-        return (
-            <div>
-                <p>Deleting project</p>
-            </div>
-        );
+        ProjectService.deleteProject(idProject).then(response => {
+            if (response.data.status === 404) {
+                navigate("/reception");
+            }
+        }).catch(() => {
+            navigate("/reception");
+        })
     }
-
-    function showOption(event) {
-        event.preventDefault();
-
-        let textButton = event.target.textContent;
-
-        switch (textButton) {
-            case "Asignar tarea":
-                setSetUp(showNewTask());
-                break;
-            case "Generar reporte":
-                setSetUp(showGenerateReport());
-                break;
-            case "Actualizar estatus":
-                setSetUp(updateStatus());
-                break;
-            case "Eliminar proyecto":
-                setSetUp(deleteProject());
-                break;
-        }
-    }
-
-    const [setup, setSetUp] = useState();
 
     return (
         <div>
             <div>
-                <button onClick={showOption}>Asignar tarea</button>
-                <button onClick={showOption}>Generar reporte</button>
-                <button onClick={showOption}>Actualizar estatus</button>
-                <button onClick={showOption}>Eliminar proyecto</button>
+                <Link to={`/tasks/${idProject}`}>Asignar tarea</Link>
+                <Link to={`/report/${idProject}`}>Generar reporte</Link>
+                <button onClick={updateStatus}>Actualizar estatus</button>
+                <button onClick={deleteProject}>Eliminar proyecto</button>
             </div>
-
+            <div>
             <h3>Detalles del Proyecto</h3>
-            <p>Titulo del proyecto</p>
-            <p>Descripción del proyceto</p>
-            <p>Entrega estimada</p>
-            <select>
-                <option>Pendiente</option>
-                <option>En progreso</option>
-                <option>Completa</option>
-            </select>
-            {setup}
+                <p>{titleProject}</p>
+                <p>{descriptionProject}</p>
+                <p>{estimatedCompletion}</p>
+                <select value={statusProject} onChange={e => setStatusProject(e.target.value)}>
+                    <option value='PENDING'>Pendiente</option>
+                    <option value='IN_PROGRESS'>En progreso</option>
+                    <option value='COMPLETE'>Completo</option>
+                </select>
+            </div>
         </div>
     );
 };

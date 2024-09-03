@@ -29,22 +29,30 @@ export const Login = () => {
     }
 
     return(
-        <div className="card">
+        <div>
             <h1>Login</h1>
             <form onSubmit={login}>
-                <p>Usuario: <input type='email'
-                                   name='email'
-                                   value={email}
-                                   onChange={(e) => setEmail(e.target.value)} />
-                </p>
-                <p>Contraseña: <input type='password'
-                                      name='password'
-                                      value={password}
-                                      onChange={(e) => setPassword(e.target.value)}/>
-                </p>
-                <button type='submit'>Ingresar</button>
+                <div className='mb-4 row'>
+                    <label form='email' className='col-sm-2 col-form-label'>Email:</label>
+                    <div className='col-sm-12'>
+                        <input type='email' className='form-control'
+                               id='email' name='email' value={email}
+                               onChange={(e) => setEmail(e.target.value)}/>
+                    </div>
+                </div>
+                <div className='mb-3 row'>
+                    <label form='password' className='col-sm-2 col-form-label'>Contraseña:</label>
+                    <div className='col-sm-12'>
+                        <input type='password'
+                               className='form-control'
+                               id='password'
+                               value={password}
+                               onChange={(e) => setPassword(e.target.value)}/>
+                    </div>
+                </div>
+                <button type='submit' className='btn btn-primary btn-lg'>Ingresar</button>
             </form>
-            <p>¿Aun no tienes cuenta? <Link to='/register'>da click aquí</Link></p>
+            <p className='lead p-3'>¿Aun no tienes cuenta? <Link to='/register'>da click aquí</Link></p>
         </div>
     );
 }

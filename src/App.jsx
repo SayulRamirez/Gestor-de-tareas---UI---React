@@ -15,7 +15,7 @@ function App() {
 
   return (
     <>
-      <div className="card">
+      <div>
           <BrowserRouter>
               <div>
                   <Routes>

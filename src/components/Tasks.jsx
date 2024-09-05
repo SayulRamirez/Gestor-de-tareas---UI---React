@@ -27,13 +27,16 @@ export const Tasks = () => {
         }
 
         return (
-            <div>
+            <div className='row justify-content-center border border-success'>
                 {tasks.map(task => (
-                    <Link to={`/task/${task.id}`} key={task.id}>
-                        <p>Titulo: {task.title}</p>
-                        <p>Estatus:{task.status}</p>
-                        <p>Prioridad: {task.priority}</p>
-                    </Link>
+                    <div className='col-sm-3 mb-5 m-1 border border-success' key={task.id}>
+                        <div className='card-body'>
+                            <h5 className='card-title'>Titulo: {task.title}</h5>
+                            <p className='card-text'>Estatus:{task.status}</p>
+                            <p className='card-footer'>Prioridad: {task.priority}</p>
+                            <Link to={`/task/${task.id}`} className='btn btn-primary'>Ver detalles</Link>
+                        </div>
+                    </div>
                 ))}
             </div>
         )
@@ -42,7 +45,7 @@ export const Tasks = () => {
     return (
         <div>
             <h3>Tareas asignadas</h3>
-            <Link to={'/reception'}>Regresar</Link>
+            <Link to={'/reception'} className='btn btn-primary'>Regresar</Link>
             {setup()}
         </div>
     );

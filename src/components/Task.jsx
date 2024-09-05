@@ -35,23 +35,40 @@ export const Task = () => {
         })
     }
 
-    return (         
+    return (
         <div key={task.id}>
-            <Link to={`/tasks/all/${idUser}`}>Regresar</Link>
-            <p>Titulo: {task.title}</p>
-            <p>Descripción: {task.description}</p>
-            <p>Estatus:
-                <select value={status} onChange={e => setStatus(e.target.value)}>
-                    <option value='IN_PROGRESS'>Pendiente</option>
-                    <option value='PENDING'>En progreso</option>
-                    <option value='COMPLETE'>Completa</option>
-                </select>
-            </p>
-            <p>Entrega estimada: {task.estimate_completion}</p>
-            <p>Prioridad: {task.priority}</p>
-            <p>Fecha de asignación: {task.create_date}</p>
-            <p>Tiempo de ejecución: {task.runtime}</p>
-            <button onClick={() => updateStatus(task.id)}>Actualizar estatus</button>
+            <Link to={`/tasks/all/${idUser}`} className='btn btn-primary btn-lg'>Regresar</Link>
+            <div className='mb-2 row'>
+                <label className='col-sm-2'>Titulo: {task.title}</label>
+            </div>
+            <div className='mb-2'>
+                <label className='mb-2 row'>Descripción: {task.description}</label>
+            </div>
+            <div className='mb-2 row'>
+                <label form='status' className='col-sm-2 col-form-label'>Estatus:</label>
+                <div className='col-sm-12'>
+                    <select name='status' id='status' className='form-select'
+                            value={task.status}
+                            onChange={e => setStatus(e.target.value)}>
+                        <option value='IN_PROGRESS'>Pendiente</option>
+                        <option value='PENDING'>En progreso</option>
+                        <option value='COMPLETE'>Completa</option>
+                    </select>
+                </div>
+            </div>
+            <div className='mb-2'>
+                <label className='mb-2 row'>Entrega estimada: {task.estimate_completion}</label>
+            </div>
+            <div className='mb-2'>
+                <label className='mb-2 row'>Prioridad: {task.priority}</label>
+            </div>
+            <div className='mb-2'>
+                <label className='mb-2 row'>Fecha de asignación: {task.create_date}</label>
+            </div>
+            <div className='mb-2'>
+                <label className='mb-2 row'>Tiempo de ejecución: {task.runtime}</label>
+            </div>
+            <button onClick={() => updateStatus(task.id)} className='btn btn-primary btn-lg'>Actualizar estatus</button>
         </div>
     );
 }

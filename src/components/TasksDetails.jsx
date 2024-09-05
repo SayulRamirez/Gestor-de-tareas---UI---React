@@ -32,17 +32,31 @@ export const TasksDetails = () => {
 
     return (
         <div>
-            <Link to={`/report/${idProject}`}>Regresar al reporte</Link>
+            <Link to={`/report/${idProject}`} className='btn btn-primary btn-lg mb-4'>Regresar al reporte</Link>
             {tasks.map(task => (
-                <div key={task.id}>
-                    <p>Titulo: {task.title}</p>
-                    <p>Descripción: {task.description}</p>
-                    <p>Estatus: {task.status}</p>
-                    <p>Fecha de entrega: {task.estimate_delivery}</p>
-                    <p>Prioridad: {task.priority}</p>
-                    <p>Fecha de creación: {task.create_date}</p>
-                    <p>Días de ejecución: {task.runtime}</p>
-                    <button onClick={() => deleteTask(task.id)}>Eliminar tarea</button>
+                <div key={task.id} className='border border-success mb-5'>
+                    <div className='mb-2 row text-lg-start'>
+                        <label className='col-sm-12'>Titulo: {task.title}</label>
+                    </div>
+                    <div className='mb-2 row text-lg-start'>
+                        <label className='col-sm-12'>Descripción: {task.description}</label>
+                    </div>
+                    <div className='mb-2 row text-lg-start'>
+                        <label className='col-sm-12'>Estatus: {task.status}</label>
+                    </div>
+                    <div className='mb-2 row text-lg-start'>
+                        <label className='col-sm-12'>Fecha de entrega: {task.estimate_delivery}</label>
+                    </div>
+                    <div className='mb-2 row text-lg-start'>
+                        <label className='col-sm-12'>Prioridad: {task.priority}</label>
+                    </div>
+                    <div className='mb-2 row text-lg-start'>
+                        <label className='col-sm-12'>Fecha de creación: {task.create_date}</label>
+                    </div>
+                    <div className='mb-2 row text-lg-start'>
+                        <label className='col-sm-12'>Días de ejecución: {task.runtime}</label>
+                    </div>
+                    <button className='btn btn-danger mb-4' onClick={() => deleteTask(task.id)}>Eliminar tarea</button>
                 </div>
             ))}
         </div>

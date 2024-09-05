@@ -19,10 +19,12 @@ export const Report = () => {
 
     return (
         <div>
-            <Link to={`/project/${idProject}`}>Regresar</Link>
+            <div className='container text-lg-start'>
+                <Link to={`/project/${idProject}`} className='btn btn-primary btn-lg '>Regresar</Link>
+            </div>
             <h3>Reporte</h3>
-            <table>
-                <thead>
+            <table className='table mt-2'>
+                <thead className='table-dark align-middle'>
                     <tr>
                         <th>Nombre(s)</th>
                         <th>Apellido paterno</th>
@@ -47,7 +49,7 @@ export const Report = () => {
                             <td>{report.in_progress}</td>
                             <td>{report.complete}</td>
                             <td>
-                                <Link to={`/tasks/details/${report.id}/${idProject}`}>Detalles</Link>
+                                <Link to={`/tasks/details/${report.id}/${idProject}`} className='btn btn-warning'>Detalles</Link>
                             </td>
                         </tr>
                     ))}

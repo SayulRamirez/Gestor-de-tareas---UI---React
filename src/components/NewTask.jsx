@@ -42,22 +42,51 @@ export const NewTask = () => {
     return (
 
         <div>
-            <p>Título: <input type='text' name='titleTask' value={titleTask}
-                              onChange={e => setTitleTask(e.target.value)}/></p>
-            <p>Descripción: <textarea name='descriptionTask' value={descriptionTask} maxLength='255'
-                                      onChange={e => setDescriptionTask(e.target.value)}/></p>
-            <p>Colaborador <input type='email' name='email' value={email}
-                                  onChange={e => setEmail(e.target.value)}/></p>
-            <p>Entrega estimada: <input type="date" name="dateEstimate" value={dateEstimate}
-                                        onChange={e => setDateEstimate(e.target.value)}/></p>
-            <p>Prioridad: <select name='priority' value={priority} onChange={e => setPriority(e.target.value)}>
-                <option value="LOW">Baja</option>
-                <option value="MEDIUM">Media</option>
-                <option value="HIGH">Alta</option>
-            </select></p>
-
-            <button onClick={createTask}>Asignar tarea</button>
-            <Link to={`/project/${idProject}`}>Cancelar</Link>
+            <h1>Crear nueva tarea</h1>
+            <div className='mb-2 row'>
+                <label form='titleTask' className='col-sm-2 col-form-label'>Título:</label>
+                <div className='col-sm-12'>
+                    <input type='text' name='titleTask' id='titleTask' className='form-control'
+                           value={titleTask}
+                           onChange={e => setTitleTask(e.target.value)}/>
+                </div>
+            </div>
+            <div className='mb-2 row'>
+                <label form='descriptionTask' className='col-sm-12 col-form-label'>Descripción:</label>
+                <div className='col-sm-12'>
+                    <textarea name='descriptionTask' id='descirptionTask' className='form-control'
+                              value={descriptionTask} maxLength='255'
+                              onChange={e => setDescriptionTask(e.target.value)}/>
+                </div>
+            </div>
+            <div className='mb-2 row'>
+                <label form='email' className='col-sm-2 col-form-label'>Colaborador:</label>
+                <div className='col-sm-12'>
+                    <input type='email' name='email' id='email' className='form-control'
+                           value={email}
+                           onChange={e => setEmail(e.target.value)}/>
+                </div>
+            </div>
+            <div className='mb-2 row'>
+                <label form='dateEstimate' className='col-sm-2 col-form-label'>Entrega estimada:</label>
+                <div className='col-sm-12'>
+                    <input type='dateEstimate' name='dateEstimate' id='dateEstimate' className='form-control'
+                           value={dateEstimate}
+                           onChange={e => setDateEstimate(e.target.value)}/>
+                </div>
+            </div>
+            <div className='mb-2 row'>
+                <label form='priority' className='col-sm-2 col-form-label'>Prioridad:</label>
+                <div className='col-sm-12'>
+                    <select name='priority' id='priority' className='form-select' value={priority} onChange={e => setPriority(e.target.value)}>
+                        <option value="LOW">Baja</option>
+                        <option value="MEDIUM">Media</option>
+                        <option value="HIGH">Alta</option>
+                    </select>
+                </div>
+            </div>
+            <button onClick={createTask} className='btn btn-primary btn-lg mx-2'>Asignar tarea</button>
+            <Link to={`/project/${idProject}`} className='btn btn-danger btn-lg'>Cancelar</Link>
         </div>
     );
 }

@@ -39,15 +39,34 @@ export const NewProject = () => {
 
     return(
         <div>
+            <h1>Crear nuevo proyecto</h1>
             <form onSubmit={createProject}>
-                <p>Título: <input type='text' name='titleProject' value={titleProject}
-                                  onChange={e => setTitleProject(e.target.value)}/></p>
-                <p>Descripción: <textarea name='descriptionProject' value={descriptionProject} maxLength='255'
-                                  onChange={e => setDescriptionProject(e.target.value)}/></p>
-                <p>Entrega estimada: <input type="date" name="dateEstimate" value={dateEstimate}
-                                            onChange={e => setDateEstimate(e.target.value)}/></p>
-                <button type='submit'>Crear</button>
-                <Link to={`/reception`}>Cancelar</Link>
+                <div className='mb-2 row'>
+                    <label form='titleProject' className='col-sm-2 col-form-label'>Título:</label>
+                    <div className='col-sm-12'>
+                        <input type='text' name='titleProject' id='titleProject' className='form-control'
+                               value={titleProject}
+                               onChange={e => setTitleProject(e.target.value)}/>
+                    </div>
+                </div>
+                <div className='mb-2 row'>
+                    <label form='descriptionProject' className='col-sm-2 col-form-label'>Descripción:</label>
+                    <div className='col-sm-12'>
+                        <textarea name='descriptionProject' id='descriptionProject' className='form-control'
+                                  value={descriptionProject}
+                                  onChange={e => setDescriptionProject(e.target.value)}/>
+                    </div>
+                </div>
+                <div className='mb-2 row'>
+                    <label form='dateEstimate' className='col-sm-4 col-form-label'>Entrega estimada:</label>
+                    <div className='col-sm-12'>
+                        <input type='date' name='dateEstimate' id='dateEstimate' className='form-control'
+                                  value={dateEstimate}
+                                  onChange={e => setDateEstimate(e.target.value)}/>
+                    </div>
+                </div>
+                <button type='submit' className='btn btn-primary btn-lg mx-3'>Crear</button>
+                <Link to={`/reception`} className='btn btn-danger btn-lg'>Cancelar</Link>
             </form>
         </div>
     );

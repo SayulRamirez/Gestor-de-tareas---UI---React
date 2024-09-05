@@ -44,22 +44,58 @@ export const Register = () => {
     return (
         <div>
             <h1>Registro de una cuenta nueva.</h1>
-            <p>Nombre(s): <input type='text' name='firstName' value={firstName}
-                                 onChange={e => setFirstName(e.target.value)}/></p>
-            <p>Apellido paterno: <input type='text' name='lastName' value={lastName}
-                                        onChange={e => setLastName(e.target.value)}/></p>
-            <p>Apellido materno: <input type='text' name='maternalSurname' value={maternalSurname}
-                                        onChange={e => setMaternalSurname(e.target.value)}/></p>
-            <p>Teléfono: <input type='numeric' name='phoneNumber' value={phoneNumber}
-                                onChange={e => setPhoneNumber(e.target.value)}/></p>
-            <hr/>
-            <h3>Datos para el inicio de sesión</h3>
-            <p>Email: <input type='email' name='email' value={email}
-                             onChange={e => setEmail(e.target.value)}/></p>
-            <p>Contraseña: <input type='password' name='password' value={password}
-                              onChange={e => setPassword(e.target.value)}/></p>
-            <button onClick={registerUser}>Registrar</button>
-            <Link to='/login'>Cancelar</Link>
+            <form onSubmit={registerUser}>
+                <div className='mb-2 row'>
+                    <label form='name' className='col-sm-2 col-form-label'>Nombre(s):</label>
+                    <div className='col-sm-12'>
+                        <input type='text' name='firstName' id='name' className='form-control' value={firstName}
+                               onChange={e => setFirstName(e.target.value)}/>
+                    </div>
+                </div>
+                <div className='mb-2 row'>
+                    <label form='lastName' className='col-sm-3 col-form-label'>Apellido paterno:</label>
+                    <div className='col-sm-12'>
+                        <input type='text' name='lastName' id='lastName' className='form-control' value={lastName}
+                               onChange={e => setLastName(e.target.value)}/>
+                    </div>
+                </div>
+                <div className='mb-2 row'>
+                    <label form='maternalSurname' className='col-sm-3 col-form-label'>Apellido materno:</label>
+                    <div className='col-sm-12'>
+                        <input type='text' name='maternalSurname' id='manternalSurname' className='form-control'
+                               value={maternalSurname}
+                               onChange={e => setMaternalSurname(e.target.value)}/>
+                    </div>
+                </div>
+                <div className='mb-2 row'>
+                    <label form='phoneNumber' className='col-sm-2 col-form-label'>Teléfono:</label>
+                    <div className='col-sm-12'>
+                        <input type='text' name='phoneNumber' id='phoneNumber' className='form-control'
+                               value={phoneNumber}
+                               onChange={e => setPhoneNumber(e.target.value)}/>
+                    </div>
+                </div>
+                <hr/>
+                <h3>Datos para el inicio de sesión</h3>
+                <div className='mb-2 row'>
+                    <label form='email' className='col-sm-2 col-form-label'>Correo:</label>
+                    <div className='col-sm-12'>
+                        <input type='email' name='email' id='email' className='form-control'
+                               value={email}
+                               onChange={e => setEmail(e.target.value)}/>
+                    </div>
+                </div>
+                <div className='mb-2 row'>
+                    <label form='password' className='col-sm-2 col-form-label'>Contraseña:</label>
+                    <div className='col-sm-12'>
+                        <input type='password' name='password' id='password' className='form-control'
+                               value={password}
+                               onChange={e => setPassword(e.target.value)}/>
+                    </div>
+                </div>
+                <button type='submit' className='btn btn-primary btn-lg mx-5'>Registrar</button>
+                <Link to='/login' className='btn btn-danger btn-lg'>Cancelar</Link>
+            </form>
         </div>
     );
 }

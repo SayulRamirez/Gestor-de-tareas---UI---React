@@ -19,17 +19,24 @@ export const Main = () => {
 
     return (
         <div>
-            <div>
-                <Link to={`/project/new`}>Nuevo proyecto</Link>
-                <Link to={`/reception`}>Mis proyectos</Link>
-                <Link to={`/tasks/all/${id}`}>Mis tareas</Link>
+            <nav className='navbar justify-content-center bg-body-tertiary mb-5 bg-dark-subtle'>
+                <Link to={`/reception`} className='btn btn-success mx-2'>Gestor de tareas</Link>
+                <Link to={`/project/new`} className='btn btn-success mx-2'>Nuevo proyecto</Link>
+                <Link to={`/reception`} className='btn btn-success mx-2'>Mis proyectos</Link>
+                <Link to={`/tasks/all/${id}`} className='btn btn-success mx-2'>Mis tareas</Link>
+            </nav>
+
+            <div className='row justify-content-center'>
+                {projects.map(project => (
+                    <div className='col-sm-3 mb-5 m-1 p-1 border border-success' key={project.id}>
+                        <div className='card-body'>
+                            <h5 className='card-title'>Título: {project.title}</h5>
+                            <p className='card-text'>Estatus: {project.status}</p>
+                            <Link to={`/project/${project.id}`} className='btn btn-primary'>Ver detalles</Link>
+                        </div>
+                    </div>
+                ))}
             </div>
-            {projects.map(project => (
-                    <Link to={`/project/${project.id}`} key={project.id}>
-                        <p>Título: {project.title}</p>
-                        <p>Estatus: {project.status}</p>
-                    </Link>
-            ))}
         </div>
     );
 }

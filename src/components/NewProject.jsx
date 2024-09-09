@@ -45,7 +45,7 @@ export const NewProject = () => {
                     <label form='titleProject' className='col-sm-2 col-form-label'>Título:</label>
                     <div className='col-sm-12'>
                         <input type='text' name='titleProject' id='titleProject' className='form-control'
-                               value={titleProject}
+                               required value={titleProject}
                                onChange={e => setTitleProject(e.target.value)}/>
                     </div>
                 </div>
@@ -53,7 +53,7 @@ export const NewProject = () => {
                     <label form='descriptionProject' className='col-sm-2 col-form-label'>Descripción:</label>
                     <div className='col-sm-12'>
                         <textarea name='descriptionProject' id='descriptionProject' className='form-control'
-                                  value={descriptionProject}
+                                  required value={descriptionProject}
                                   onChange={e => setDescriptionProject(e.target.value)}/>
                     </div>
                 </div>
@@ -61,8 +61,8 @@ export const NewProject = () => {
                     <label form='dateEstimate' className='col-sm-4 col-form-label'>Entrega estimada:</label>
                     <div className='col-sm-12'>
                         <input type='date' name='dateEstimate' id='dateEstimate' className='form-control'
-                                  value={dateEstimate}
-                                  onChange={e => setDateEstimate(e.target.value)}/>
+                               required value={dateEstimate}
+                               onChange={e => setDateEstimate(e.target.value)}/>
                     </div>
                 </div>
                 <button type='submit' className='btn btn-primary btn-lg mx-3'>Crear</button>

@@ -27,9 +27,9 @@ export const Tasks = () => {
         }
 
         return (
-            <div className='row justify-content-center border border-success'>
+            <div className='justify-content-center'>
                 {tasks.map(task => (
-                    <div className='col-sm-3 mb-5 m-1 border border-success' key={task.id}>
+                    <div className='m-2 p-1 border border-success' key={task.id}>
                         <div className='card-body'>
                             <h5 className='card-title'>Titulo: {task.title}</h5>
                             <p className='card-text'>Estatus:{task.status}</p>

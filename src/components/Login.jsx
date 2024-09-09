@@ -35,7 +35,7 @@ export const Login = () => {
                 <div className='mb-4 row'>
                     <label form='email' className='col-sm-2 col-form-label'>Email:</label>
                     <div className='col-sm-12'>
-                        <input type='email' className='form-control'
+                        <input type='email' className='form-control' required
                                id='email' name='email' value={email}
                                onChange={(e) => setEmail(e.target.value)}/>
                     </div>
@@ -43,7 +43,7 @@ export const Login = () => {
                 <div className='mb-3 row'>
                     <label form='password' className='col-sm-2 col-form-label'>Contraseña:</label>
                     <div className='col-sm-12'>
-                        <input type='password'
+                        <input type='password' required
                                className='form-control'
                                id='password'
                                value={password}

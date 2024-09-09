@@ -47,7 +47,7 @@ export const NewTask = () => {
                 <label form='titleTask' className='col-sm-2 col-form-label'>Título:</label>
                 <div className='col-sm-12'>
                     <input type='text' name='titleTask' id='titleTask' className='form-control'
-                           value={titleTask}
+                           required value={titleTask}
                            onChange={e => setTitleTask(e.target.value)}/>
                 </div>
             </div>
@@ -55,7 +55,7 @@ export const NewTask = () => {
                 <label form='descriptionTask' className='col-sm-12 col-form-label'>Descripción:</label>
                 <div className='col-sm-12'>
                     <textarea name='descriptionTask' id='descirptionTask' className='form-control'
-                              value={descriptionTask} maxLength='255'
+                              required value={descriptionTask} maxLength='255'
                               onChange={e => setDescriptionTask(e.target.value)}/>
                 </div>
             </div>
@@ -63,15 +63,15 @@ export const NewTask = () => {
                 <label form='email' className='col-sm-2 col-form-label'>Colaborador:</label>
                 <div className='col-sm-12'>
                     <input type='email' name='email' id='email' className='form-control'
-                           value={email}
+                           required placeholder='colaborador@email.com' value={email}
                            onChange={e => setEmail(e.target.value)}/>
                 </div>
             </div>
             <div className='mb-2 row'>
                 <label form='dateEstimate' className='col-sm-2 col-form-label'>Entrega estimada:</label>
                 <div className='col-sm-12'>
-                    <input type='dateEstimate' name='dateEstimate' id='dateEstimate' className='form-control'
-                           value={dateEstimate}
+                    <input type='date' name='dateEstimate' id='dateEstimate' className='form-control'
+                           required value={dateEstimate}
                            onChange={e => setDateEstimate(e.target.value)}/>
                 </div>
             </div>

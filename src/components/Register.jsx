@@ -13,7 +13,8 @@ export const Register = () => {
 
     const navigate = useNavigate();
 
-    function registerUser() {
+    function registerUser(e) {
+        e.preventDefault();
 
         const register = {
             first_name: firstName,
@@ -25,17 +26,27 @@ export const Register = () => {
         };
 
         Auth.register(register).then(response => {
-
+            console.log("Status: ", response.status);
             if (response.status === 400) {
                 alert("Debes de llenar todos los campos");
                 return;
             }
 
             if (response.status === 200) {
-                alert("Registro exitoso");
+                alert("Registro éxitoso");
                 navigate("/login");
             }
         }).catch(error => {
+            if (error.response.status === 409) {
+
+                if (error.response.data.message.startsWith("Email")) {
+                    alert("El email ya existe");
+                    return;
+                }
+
+                alert("El teléfono ya existe");
+                return;
+            }
             console.error('Error al registrar el usuario: ', error)
             alert("Ocurrio un problema, por favor intente más tarde.")
         })
@@ -49,14 +60,14 @@ export const Register = () => {
                     <label form='name' className='col-sm-2 col-form-label'>Nombre(s):</label>
                     <div className='col-sm-12'>
                         <input type='text' name='firstName' id='name' className='form-control' value={firstName}
-                               onChange={e => setFirstName(e.target.value)}/>
+                               required onChange={e => setFirstName(e.target.value)}/>
                     </div>
                 </div>
                 <div className='mb-2 row'>
                     <label form='lastName' className='col-sm-3 col-form-label'>Apellido paterno:</label>
                     <div className='col-sm-12'>
                         <input type='text' name='lastName' id='lastName' className='form-control' value={lastName}
-                               onChange={e => setLastName(e.target.value)}/>
+                               required onChange={e => setLastName(e.target.value)}/>
                     </div>
                 </div>
                 <div className='mb-2 row'>
@@ -71,7 +82,7 @@ export const Register = () => {
                     <label form='phoneNumber' className='col-sm-2 col-form-label'>Teléfono:</label>
                     <div className='col-sm-12'>
                         <input type='text' name='phoneNumber' id='phoneNumber' className='form-control'
-                               value={phoneNumber}
+                               required value={phoneNumber}
                                onChange={e => setPhoneNumber(e.target.value)}/>
                     </div>
                 </div>
@@ -81,7 +92,7 @@ export const Register = () => {
                     <label form='email' className='col-sm-2 col-form-label'>Correo:</label>
                     <div className='col-sm-12'>
                         <input type='email' name='email' id='email' className='form-control'
-                               value={email}
+                               required value={email}
                                onChange={e => setEmail(e.target.value)}/>
                     </div>
                 </div>
@@ -89,7 +100,7 @@ export const Register = () => {
                     <label form='password' className='col-sm-2 col-form-label'>Contraseña:</label>
                     <div className='col-sm-12'>
                         <input type='password' name='password' id='password' className='form-control'
-                               value={password}
+                               required value={password}
                                onChange={e => setPassword(e.target.value)}/>
                     </div>
                 </div>

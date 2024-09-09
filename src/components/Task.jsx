@@ -38,15 +38,15 @@ export const Task = () => {
     return (
         <div key={task.id}>
             <Link to={`/tasks/all/${idUser}`} className='btn btn-primary btn-lg'>Regresar</Link>
-            <div className='mb-2 row'>
-                <label className='col-sm-2'>Titulo: {task.title}</label>
+            <div className='mt-2 mb-2'>
+                <label className='row'>Titulo: {task.title}</label>
             </div>
             <div className='mb-2'>
                 <label className='mb-2 row'>Descripción: {task.description}</label>
             </div>
             <div className='mb-2 row'>
-                <label form='status' className='col-sm-2 col-form-label'>Estatus:</label>
-                <div className='col-sm-12'>
+                <label form='status' className='mb-2 row col-form-label'>Estatus:</label>
+                <div className='mb-2 row'>
                     <select name='status' id='status' className='form-select'
                             value={task.status}
                             onChange={e => setStatus(e.target.value)}>
@@ -68,7 +68,7 @@ export const Task = () => {
             <div className='mb-2'>
                 <label className='mb-2 row'>Tiempo de ejecución: {task.runtime}</label>
             </div>
-            <button onClick={() => updateStatus(task.id)} className='btn btn-primary btn-lg'>Actualizar estatus</button>
+            <button onClick={() => updateStatus(task.id)} className='btn btn-primary btn-lg mt-2'>Actualizar estatus</button>
         </div>
     );
 }

@@ -71,6 +71,8 @@ Puedes asignarele nuevas tareas a los colaboradores.
 Muestra los datos de los colaboradores, además del número de tareas asignadas y cuantas estan que cada estatus y una acción adicional
 para mostrar los detalles de las tareas de dicho colaborador.
 
+![reporte](https://github.com/user-attachments/assets/3e3fc423-85ef-4949-95d0-f85be57f7255)
+
 ## Detalle de las tareas.
 
 ![detalle_tareas](https://github.com/user-attachments/assets/af2622f6-9d3e-4b88-bf09-ea4faf7efcdf)
